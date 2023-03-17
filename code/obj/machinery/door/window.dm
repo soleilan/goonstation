@@ -6,6 +6,9 @@
 
 ////////////////////////////////////////////////////// Sliding door parent ////////////////////////////////////
 
+TYPEINFO(/obj/machinery/door/window)
+	mats = list("CON-1" = 5, "CRY-1" = 15)
+
 /obj/machinery/door/window
 	name = "interior door"
 	icon = 'icons/obj/doors/windoor.dmi'
@@ -20,6 +23,7 @@
 	autoclose = TRUE
 	event_handler_flags = USE_FLUID_ENTER
 	object_flags = CAN_REPROGRAM_ACCESS | BOTS_DIRBLOCK | HAS_DIRECTIONAL_BLOCKING
+	deconstruct_flags = DECON_NULL_ACCESS | DECON_WRENCH | DECON_CROWBAR | DECON_WELDER | DECON_SCREWDRIVER | DECON_MULTITOOL
 
 /obj/machinery/door/window/New()
 	..()
