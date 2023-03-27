@@ -170,6 +170,8 @@ TYPEINFO(/obj/item/organ/eye/cyber/sechud)
 		if (src.broken)
 			processing_items.Remove(src)
 			get_image_group(CLIENT_IMAGE_GROUP_ARREST_ICONS).remove_mob(donor)
+			REMOVE_ATOM_PROPERTY(donor, PROP_MOB_DISORIENT_RESIST_EYE, src)
+			REMOVE_ATOM_PROPERTY(donor, PROP_MOB_DISORIENT_RESIST_EYE_MAX, src)
 
 	on_transplant(var/mob/M)
 		..()
@@ -177,10 +179,14 @@ TYPEINFO(/obj/item/organ/eye/cyber/sechud)
 			return
 		processing_items |= src
 		get_image_group(CLIENT_IMAGE_GROUP_ARREST_ICONS).add_mob(donor)
+		APPLY_ATOM_PROPERTY(M, PROP_MOB_DISORIENT_RESIST_EYE, src, 100)
+		APPLY_ATOM_PROPERTY(M, PROP_MOB_DISORIENT_RESIST_EYE_MAX, src, 100)
 
 	on_removal()
 		processing_items.Remove(src)
 		get_image_group(CLIENT_IMAGE_GROUP_ARREST_ICONS).remove_mob(donor)
+		REMOVE_ATOM_PROPERTY(donor, PROP_MOB_DISORIENT_RESIST_EYE, src)
+		REMOVE_ATOM_PROPERTY(donor, PROP_MOB_DISORIENT_RESIST_EYE_MAX, src)
 		..()
 
 TYPEINFO(/obj/item/organ/eye/cyber/thermal)
